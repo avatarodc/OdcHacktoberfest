@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutons Élégants</title>
+    <style>
+        /* Variables pour les couleurs et animations */
+        :root {
+            --primary-color: #8b5cf6;
+            --primary-hover: #7c3aed;
+            --success-color: #059669;
+            --danger-color: #dc2626;
+            --gradient-1: linear-gradient(135deg, #8b5cf6, #6366f1);
+            --gradient-2: linear-gradient(135deg, #3b82f6, #06b6d4);
+            --gradient-3: linear-gradient(135deg, #f43f5e, #fb923c);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f8fafc;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Style de base pour tous les boutons */
+        .btn {
+            position: relative;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            letter-spacing: 0.03em;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+        }
+
+        /* Bouton avec dégradé élégant et effet de profondeur */
+        .btn-gradient {
+            background-image: var(--gradient-1);
+            color: white;
+            border: 2px solid transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease infinite;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.35);
+            background-position: right center;
+        }
+
+        /* Bouton effet verre avec reflet sophistiqué */
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #1e293b;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.4),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .btn-glass:hover::before {
+            left: 100%;
+        }
+
+        /* Bouton néon avec animation de lueur */
+        .btn-neon {
+            background: #0f172a;
+            color: #22d3ee;
+            border: 2px solid #22d3ee;
+            text-shadow: 0 0 5px #22d3ee;
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+            animation: neonPulse 2s infinite;
+        }
+
+        .btn-neon:hover {
+            background: #22d3ee;
+            color: #0f172a;
+            text-shadow: none;
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.6);
+        }
+
+        /* Bouton avec animation de bordure sophistiquée */
+        .btn-border-anim {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            background-image: linear-gradient(120deg, transparent 50%, var(--primary-color) 50%);
+            background-size: 240%;
+            background-position: 100%;
+        }
+
+        .btn-border-anim:hover {
+            background-position: 0;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Bouton avec effet d'ondulation élégant */
+        .btn-ripple {
+            background: var(--gradient-2);
+            color: white;
+            isolation: isolate;
+        }
+
+        .btn-ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            padding-top: 200%;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: transform 0.75s, opacity 0.75s;
+        }
+
+        .btn-ripple:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        /* Bouton 3D avec effet de profondeur amélioré */
+        .btn-3d {
+            background: var(--success-color);
+            color: white;
+            transform-style: preserve-3d;
+            transform: perspective(1000px) translateZ(0);
+            box-shadow: 0 6px 0 darken(var(--success-color), 10%),
+                       0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-3d:hover {
+            transform: perspective(1000px) translateZ(20px);
+            box-shadow: 0 3px 0 darken(var(--success-color), 10%),
+                       0 6px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Bouton avec effet de lueur pulsante */
+        .btn-glow {
+            background: var(--gradient-3);
+            color: white;
+            animation: glowPulse 3s infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(34, 211, 238, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(34, 211, 238, 0.6); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(244, 63, 94, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(244, 63, 94, 0.7); }
+        }
+
+        /* Adaptation pour le mode sombre */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #0f172a;
+            }
+            .container {
+                background: rgba(30, 41, 59, 0.95);
+            }
+            .btn-glass {
+                background: rgba(255, 255, 255, 0.1);
+                color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="btn-group">
+            <button class="btn btn-gradient">Gradient Élégant</button>
+            <button class="btn btn-glass">Effet Verre</button>
+            <button class="btn btn-neon">Néon Moderne</button>
+            <button class="btn btn-border-anim">Bordure Animée</button>
+            <button class="btn btn-ripple">Effet Ondulation</button>
+            <button class="btn btn-3d">Relief 3D</button>
+            <button class="btn btn-glow">Lueur Pulsante</button>
+        </div>
+    </div>
+</body>
+</html>
